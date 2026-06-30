@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuizMaster Pro</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="app">
+    <!-- ─── HEADER ─── -->
+    <header class="app-header">
+      <div class="logo">
+        <i class="fas fa-brain"></i>
+        <span>QuizMaster</span>
+      </div>
+      <div class="header-stats">
+        <span class="stat-item">
+          <i class="fas fa-check-circle"></i>
+          <span class="num" id="completedCount">0</span>
+          <span>/ 4 completed</span>
+        </span>
+        <span class="stat-item">
+          <i class="fas fa-flag-checkered"></i>
+          <span class="num" id="totalCorrectDisplay">0</span>
+          <span>correct</span>
+        </span>
+      </div>
+    </header>
+
+    <!-- ─── HOME SCREEN ─── -->
+    <section class="screen active" id="homeScreen">
+      <div class="home-greeting">🎯 Choose Your Challenge</div>
+      <p class="home-sub">Select a category and test your knowledge. Complete all four to earn your final score!</p>
+      <div class="category-grid" id="categoryGrid">
+        <!-- categories injected by JS -->
+      </div>
+    </section>
+
+    <!-- ─── QUIZ SCREEN ─── -->
+    <section class="screen" id="quizScreen">
+      <div class="quiz-header">
+        <div class="quiz-title">
+          <i class="fas fa-question-circle"></i>
+          <span id="quizCategoryTitle">Category</span>
+        </div>
+        <span class="quiz-progress-text" id="quizProgress">1 / 15</span>
+      </div>
+      <div class="progress-bar-wrapper">
+        <div class="bar" id="quizProgressBar" style="width:0%;"></div>
+      </div>
+      <div class="question-text" id="questionText">Loading question…</div>
+      <div class="options-grid" id="optionsContainer">
+        <!-- options injected by JS -->
+      </div>
+      <div class="quiz-footer">
+        <button class="btn btn-secondary" id="quitQuizBtn">
+          <i class="fas fa-arrow-left"></i> Quit
+        </button>
+        <button class="btn btn-primary" id="nextBtn" disabled>
+          Next <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ─── RESULT SCREEN ─── -->
+    <section class="screen" id="resultScreen">
+      <div class="result-container">
+        <div class="result-icon" id="resultIcon">🎉</div>
+        <div class="result-title" id="resultTitle">Great Job!</div>
+        <div class="result-sub" id="resultSub">You completed the quiz.</div>
+        <div class="result-stats" id="resultStats">
+          <div class="result-stat-card">
+            <span class="num gold" id="resultScore">0</span>
+            <span class="label">Score</span>
+          </div>
+          <div class="result-stat-card">
+            <span class="num green" id="resultCorrect">0</span>
+            <span class="label">Correct</span>
+          </div>
+          <div class="result-stat-card">
+            <span class="num red" id="resultWrong">0</span>
+            <span class="label">Wrong</span>
+          </div>
+          <div class="result-stat-card">
+            <span class="num primary" id="resultPercentage">0%</span>
+            <span class="label">Percentage</span>
+          </div>
+        </div>
+        <div class="result-performance" id="resultPerformance">Excellent</div>
+        <div class="result-actions">
+          <button class="btn btn-secondary" id="resultHomeBtn">
+            <i class="fas fa-home"></i> Home
+          </button>
+          <button class="btn btn-primary" id="resultRetryBtn">
+            <i class="fas fa-redo"></i> Retry
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FINAL OVERALL RESULT ─── -->
+    <section class="screen" id="finalScreen">
+      <div class="final-result">
+        <div class="trophy">🏆</div>
+        <div class="final-title">All Categories Complete!</div>
+        <div class="final-sub">You've conquered every challenge. Here's your overall performance.</div>
+        <div class="final-stats-grid" id="finalStats">
+          <div class="final-stat-card">
+            <span class="num primary" id="finalTotalQ">60</span>
+            <span class="label">Total Questions</span>
+          </div>
+          <div class="final-stat-card">
+            <span class="num green" id="finalCorrect">0</span>
+            <span class="label">Correct</span>
+          </div>
+          <div class="final-stat-card">
+            <span class="num red" id="finalWrong">0</span>
+            <span class="label">Wrong</span>
+          </div>
+          <div class="final-stat-card">
+            <span class="num gold" id="finalPercentage">0%</span>
+            <span class="label">Overall Percentage</span>
+          </div>
+        </div>
+        <div class="final-perf" id="finalPerformance">Excellent</div>
+        <div class="final-actions">
+          <button class="btn btn-primary" id="finalHomeBtn">
+            <i class="fas fa-home"></i> Home
+          </button>
+          <button class="btn btn-secondary" id="finalRetryAllBtn">
+            <i class="fas fa-redo"></i> Retry All
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ─── CONFETTI CONTAINER ─── -->
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
